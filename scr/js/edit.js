@@ -1,3 +1,4 @@
+const apiUrl = 'https://meu-backend.vercel.app/api/students';
 document.addEventListener("DOMContentLoaded", () => {
     // Obtém os parâmetros da URL
     const params = new URLSearchParams(window.location.search);
