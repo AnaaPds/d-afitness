@@ -1,4 +1,4 @@
-const apiUrl = 'https://meu-backend-java.vercel.app'; // URL do seu backend
+const apiUrl = 'https://meu-backend-java-jaoekjutt-anaapds-projects.vercel.app'; // URL do seu backend
 
 document.addEventListener("DOMContentLoaded", () => {
     // Obtém os parâmetros da URL
