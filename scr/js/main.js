@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
             <td>${ageInput.value}</td>
             <td>${emailInput.value}</td>
             <td>${modalityInput.value}</td>
-            <td><img src="./scr/image/mulher.png" alt="Imagem da mulher" class="imagem-icone"></td>
             <td><button class="btn-edit"><img src="./scr/image/editar.png" alt="Editar"></button></td>
             <td><button class="btn-delete"><img src="./scr/image/lixeira.png" alt="Excluir"></button></td>
         `;
