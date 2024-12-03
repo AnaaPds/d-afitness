@@ -1,4 +1,5 @@
-const apiUrl = 'https://meu-backend.vercel.app/api/students';
+const apiUrl = 'https://meu-backend-java.vercel.app'; // URL do seu backend
+
 document.addEventListener("DOMContentLoaded", () => {
     // Obtém os parâmetros da URL
     const params = new URLSearchParams(window.location.search);
@@ -33,8 +34,28 @@ document.addEventListener("DOMContentLoaded", () => {
     saveButton.addEventListener("click", (event) => {
         event.preventDefault(); // Impede o comportamento padrão do botão
 
-        // Aqui você pode implementar o envio dos dados para o servidor
-        alert("Alterações salvas com sucesso!");
-        window.location.href = "index.html"; // Retorna à página inicial após salvar
+        const studentData = {
+            id: id,
+            name: nameInput.value,
+            age: ageInput.value,
+            email: emailInput.value,
+            modality: modalityInput.value,
+        };
+
+        fetch(`${apiUrl}/students/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(studentData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Aluno atualizado com sucesso:', data);
+            alert('Aluno atualizado com sucesso!');
+            window.location.href = "index.html";  // Retorna à página inicial após salvar
+        })
+        .catch(error => {
+            console.error('Erro ao atualizar aluno:', error);
+            alert('Erro ao atualizar aluno. Tente novamente.');
+        });
     });
 });
