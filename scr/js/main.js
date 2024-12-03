@@ -1,4 +1,5 @@
-const apiUrl = 'https://meu-backend.vercel.app/api/students';
+const apiUrl = 'https://meu-backend-java.vercel.app'; // URL do seu backend
+
 document.addEventListener("DOMContentLoaded", () => {
     const saveButton = document.querySelector(".btn-save");
     const nameInput = document.querySelector(".form-add input[placeholder='Nome']");
@@ -17,7 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Cria uma nova linha na tabela
+        const studentData = {
+            name: nameInput.value,
+            age: ageInput.value,
+            email: emailInput.value,
+            modality: modalityInput.value,
+        };
+
+        // Adiciona o aluno localmente na tabela
         const newRow = document.createElement("tr");
         newRow.innerHTML = `
             <td>${tableBody.children.length + 1}</td>
@@ -30,13 +38,29 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         tableBody.appendChild(newRow);
 
-        // Limpa os campos do formulário
+        // Limpa os campos
         nameInput.value = "";
         ageInput.value = "";
         emailInput.value = "";
         modalityInput.value = "";
 
-        // Adiciona eventos aos botões da nova linha
+        // Fazendo o envio dos dados para o backend
+        fetch(`${apiUrl}/students`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(studentData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Aluno salvo com sucesso:', data);
+            alert('Aluno salvo com sucesso!');
+        })
+        .catch(error => {
+            console.error('Erro ao salvar aluno:', error);
+            alert('Erro ao salvar aluno. Tente novamente.');
+        });
+
+        // Adiciona os eventos para edição e exclusão na nova linha
         addRowEvents(newRow);
     });
 
@@ -48,14 +72,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // Botão Editar
         editButton.addEventListener("click", () => {
             const cells = row.children;
-        const id = cells[0].innerText;
-        const name = cells[1].innerText;
-        const age = cells[2].innerText;
-        const email = cells[3].innerText;
-        const modality = cells[4].innerText;
+            const id = cells[0].innerText;
+            const name = cells[1].innerText;
+            const age = cells[2].innerText;
+            const email = cells[3].innerText;
+            const modality = cells[4].innerText;
 
             const url = `edit.html?id=${id}&name=${encodeURIComponent(name)}&age=${age}&email=${encodeURIComponent(email)}&modality=${encodeURIComponent(modality)}`;
-    window.location.href = url;
+            window.location.href = url;
         });
 
         // Botão Excluir
