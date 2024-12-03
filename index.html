@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&Afitness</title>
+    <link rel="stylesheet" href="./scr/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700" rel="stylesheet">
+</head>
+<body>
+    <!-- logo aparecer -->
+    <header>
+        <h1><img src="./scr/image/logo.png" alt="logo D&Afitness"></h1>
+    </header>
+
+    <main>
+        <h2>Gestão de Alunos</h2>
+        <section class="form-add">
+            <input type="text" placeholder="Nome">
+            <input type="number" placeholder="Idade">
+            <input type="email" placeholder="Email">
+            <!-- colocar os dados -->
+            <select>
+                <option value="">Modalidade</option>
+                <option value="Musculação">Musculação</option>
+                <option value="Luta">Luta</option>
+                <option value="CrossFit">CrossFit</option>
+                <option value="Dança">Dança</option>
+                <option value="Natação">Natação</option>
+                <!-- Escolher alguma modalidade outras modalidades -->
+            </select>
+            <button class="btn-save">Salvar</button>
+        </section>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Email</th>
+                    <th>Modalidade</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Ana Paula Dantas</td>
+                    <td>16</td>
+                    <td>ana.p.silva@gmail.com</td>
+                    <td>Musculação</td>
+                    <td><button class="btn-edit"><img src="./scr/image/editar.png" alt="Editar"></button></td>
+                    <td><button class="btn-delete"><img src="./scr/image/lixeira.png" alt="Excluir"></button></td> 
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <script src="./scr/js/main.js"></script>
+</body>
+</html>
