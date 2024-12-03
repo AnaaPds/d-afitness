@@ -1,3 +1,4 @@
+const apiUrl = 'https://meu-backend.vercel.app/api/students';
 document.addEventListener("DOMContentLoaded", () => {
     const saveButton = document.querySelector(".btn-save");
     const nameInput = document.querySelector(".form-add input[placeholder='Nome']");
